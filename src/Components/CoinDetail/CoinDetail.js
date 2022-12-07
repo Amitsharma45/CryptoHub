@@ -6,14 +6,15 @@ import { Link } from 'react-router-dom';
 import config from '../Config/Config';
 import './CoinDetail.css'
 import axios from 'axios';
+import CoinGraph from './CoinGraph';
 export default function CoinDetail() {
     const { name } = useParams();
     const [ data, setData ] = useState([]);
     useEffect(() => {
         async function getData(){
-            console.log('name',name)
+            // console.log('name',name)
             const {data} =await axios.get(`https://api.coingecko.com/api/v3/coins/${name}`);
-            console.log(data)
+            // console.log(data)
             setData(data);
         }
         getData();
@@ -37,7 +38,7 @@ export default function CoinDetail() {
                         </div>
                     </Col>
                     <Col xs={12} sm={7}>
-
+                        <CoinGraph data={data}/>
                     </Col>
                 </Row>
             </Container>

@@ -10,7 +10,7 @@ export default function Main(props) {
     }, [props.currentItems])
     // console.log('data', data)
     return (
-        <div className='container my-5'>
+        <div className='container my-5 table-responsive'>
             <table className="table table-hover ">
                 <thead style={{ backgroundColor: 'yellow' }}>
                     <tr style={{ textAlign: 'center' }}>
@@ -31,9 +31,8 @@ export default function Main(props) {
                                 <tr style={{ color: 'white', lineHeight: '40px', textAlign: 'right' }} key={item.name} >
                                     <th style={{ textAlign: 'left' }}> {item.market_cap_rank}</th>
                                     <th scope="row" style={{ textAlign: 'left' }}>
-                                        {/* <i class=" fa star  fa-star"></i> */}
                                         <Link to={`/coin-detail/${item.id}`} style={{textDecoration:'none' ,color:'white'}}>
-                                            <img style={{ width: '40px', height: '40px' }} src={item.image} />
+                                            <img id='logo' src={item.image} />
                                             &nbsp; {item.name}
                                         </Link>
                                     </th>

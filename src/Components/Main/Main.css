@@ -3,3 +3,22 @@
     font-size: 22px;
     /* color: white ; */
 }
+
+#logo{
+    width: 40px;
+    height: 40px;
+}
+@media screen and (max-width: 720px) {
+    #logo{
+        width: 20px;
+        height: 20px;
+    }
+    .table{
+        width: 80vw;
+        overflow: scroll;
+        
+    }
+  
+}
+
+

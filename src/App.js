@@ -15,6 +15,7 @@ function App() {
           <CoinTable itemsPerPage={8} />
         </>} />
         <Route path="/coin-detail/:name" element={<CoinDetail />} />
+        
       </Routes>
       <Footer />
     </div>
