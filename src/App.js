@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes >
         <Route path="/" element={<>
-          <Banner />
+          {/* <Banner /> */}
           <CoinTable itemsPerPage={8} />
         </>} />
         <Route path="/coin-detail/:name" element={<CoinDetail />} />

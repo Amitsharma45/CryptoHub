@@ -10,7 +10,7 @@ export default function Main(props) {
     }, [props.currentItems])
     // console.log('data', data)
     return (
-        <div className='container my-5 table-responsive'>
+        <div className='my-5 container table-responsive'>
             <table className="table table-hover ">
                 <thead style={{ backgroundColor: 'yellow' }}>
                     <tr style={{ textAlign: 'center' }}>
@@ -28,24 +28,24 @@ export default function Main(props) {
                         data !== null && data.length > 0 ? (
 
                             data?.map((item) =>
-                                <tr style={{ color: 'white', lineHeight: '40px', textAlign: 'right' }} key={item.name} >
-                                    <th style={{ textAlign: 'left' }}> {item.market_cap_rank}</th>
-                                    <th scope="row" style={{ textAlign: 'left' }}>
+                                <tr style={{ color: 'white', lineHeight: '40px', textAlign: '' }} key={item.name} >
+                                    <td style={{ textAlign: 'left' }}> {item.market_cap_rank}</td>
+                                    <td className='td-space-lg' style={{ textAlign: 'left' }}>
                                         <Link to={`/coin-detail/${item.id}`} style={{textDecoration:'none' ,color:'white'}}>
                                             <img id='logo' src={item.image} />
                                             &nbsp; {item.name}
                                         </Link>
-                                    </th>
-                                    <td>&#8377; {item.current_price.toLocaleString()}</td>
-                                    <td>&#8377; {item.high_24h.toLocaleString()}</td>
-                                    <td>&#8377; {item.low_24h.toLocaleString()}</td>
-                                    <td style={{ color: (item.price_change_percentage_24h > 1 ? 'green' : 'red') }}>{item.price_change_percentage_24h.toLocaleString()} %</td>
-                                    <td>&#8377; {item.market_cap.toLocaleString()}</td>
+                                    </td>
+                                    <td className='td-space' >&#8377; {item.current_price.toLocaleString()}</td>
+                                    <td className='td-space' >&#8377; {item.high_24h.toLocaleString()}</td>
+                                    <td className='td-space'>&#8377; {item.low_24h.toLocaleString()}</td>
+                                    <td className='td-space' style={{ color: (item.price_change_percentage_24h > 1 ? 'green' : 'red') }}>{item.price_change_percentage_24h.toLocaleString()} %</td>
+                                    <td className='td-space-lg'>&#8377; {item.market_cap.toLocaleString()}</td>
                                 </tr>
                             )
 
                         ) : (
-                            <tr>None</tr>
+                            <tr>Loading ...</tr>
                         )
 
                     }
