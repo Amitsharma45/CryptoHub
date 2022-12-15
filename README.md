@@ -3,7 +3,7 @@
 [Project Link](https://cryptohub45.netlify.app/)
 
 # About Project
-CryptoHub is a single page react js application, that was developed with the help of Coingecko Api. This application is used to find the detail of any cryptocurrency like the current price of the coin, total market cap of the coin, and 24-hour price low and high.
+CryptoHub is a single page react js application, that was developed with the help of [Coingecko Api](https://www.coingecko.com/en/api). This application is used to find the detail of any cryptocurrency like the current price of the coin, total market cap of the coin, and 24-hour price low and high.
 And a Line chart that represents the price action of coins on different time frames i.e 24 hours, last week, 30 days and One year.
 Tech Stack Used: React JS, Bootstrap, Chart JS, axios, Git.
 
