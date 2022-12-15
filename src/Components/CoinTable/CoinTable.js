@@ -1,67 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import config from '../Config/Config';
-import axios from 'axios';
-import Main from '../Main/Main';
+import './CoinTable.css'
+import React, { useEffect, useState, } from 'react'
+import { Link } from 'react-router-dom';
 
-function CoinTable({ itemsPerPage }) {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    async function getCoin() {
-      const resp = await axios.get(config.coinlist);
-      // console.log('hi',resp)
-      setItems(resp.data)
-    }
-    getCoin();
-  }, [])
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
+export default function CoinTable(props) {
+    // console.log('main',props.currentItems)
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        setData(props.currentItems)
+    }, [props.currentItems])
+    // console.log('data', data)
+    return (
+        <div className=' my-5 table-responsive container' >
+            <table className="table table-hover ">
+                <thead style={{ backgroundColor: 'yellow' }}>
+                    <tr style={{ textAlign: 'center' }}>
+                        <th scope="col">#</th>
+                        <th scope="col">Coin</th>
+                        <th scope="col">Current Price</th>
+                        <th scope="col">24 High</th>
+                        <th scope="col">24 Low</th>
+                        <th scope="col">24h change %</th>
+                        <th scope="col">Market Cap.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                            data?.map((item) =>
+                                <tr style={{ color: 'white', lineHeight: '40px', textAlign: 'right' }} key={item.name} >
+                                    <td style={{ textAlign: 'left' }}> {item.market_cap_rank}</td>
+                                    <td className='td-space-lg' style={{ textAlign: 'left' }}>
+                                        <Link to={`/coin-detail/${item.id}`} style={{textDecoration:'none' ,color:'white'}}>
+                                            <img id='logo' src={item.image} />
+                                            &nbsp; {item.name}
+                                        </Link>
+                                    </td>
+                                    <td className='td-space' >&#8377; {item.current_price.toLocaleString()}</td>
+                                    <td className='td-space' >&#8377; {item.high_24h.toLocaleString()}</td>
+                                    <td className='td-space'>&#8377; {item.low_24h.toLocaleString()}</td>
+                                    <td className='td-space' style={{ color: (item.price_change_percentage_24h > 1 ? 'green' : 'red') }}>{item.price_change_percentage_24h.toLocaleString()} %</td>
+                                    <td className='td-space-lg'>&#8377; {item.market_cap.toLocaleString()}</td>
+                                </tr>
+                            )
 
-  const [itemOffset, setItemOffset] = useState(0);
+                    }
+                </tbody>
+            </table>
 
-  useEffect(() => {
-
-    const endOffset = itemOffset + itemsPerPage;
-    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, items, itemsPerPage]);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
-    setItemOffset(newOffset);
-  };
-
-  return (
-    <>
-      <h1 className='text-center my-4 ' >Top Crypto Currency</h1>
-      <Main currentItems={currentItems} />
-      <div style={{padding:'10px 0'}} >
-        <ReactPaginate
-          previousLabel={"<<"}
-          nextLabel={">>"}
-          breakLabel={"..."}
-          pageCount={pageCount}
-          marginPagesDisplayed={4}
-          pageRangeDisplayed={4}
-          onPageChange={handlePageClick}
-          containerClassName={"pagination justify-content-center"}
-          pageClassName={"page-item"}
-          pageLinkClassName={"page-link"}
-          previousClassName={"page-item"}
-          previousLinkClassName={"page-link"}
-          nextClassName={"page-item"}
-          nextLinkClassName={"page-link"}
-          breakClassName={"page-item"}
-          breakLinkClassName={"page-link"}
-          activeClassName={"active"}
-        />
-      </div>
-    </>
-  );
+        </div>
+    )
 }
-
-export default CoinTable;

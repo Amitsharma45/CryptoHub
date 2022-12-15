@@ -73,10 +73,11 @@ function CoinGraph(props) {
             </Col>
             <Col xs={12} sm={3}>
                 <div className='d-flex justify-content-center align-items-center flex-column'>
-                    <ul className='chart-ul mt-5'>
-                        <li className='chart-li' onClick={()=>getHitoryData(data, 1)}>24 Hours Data</li>
-                        <li className='chart-li' onClick={()=>getHitoryData(data, 7)}>last week Data</li>
-                        <li className='chart-li' onClick={()=>getHitoryData(data, 30)}>last Month Data</li>
+                    <ul className='chart-ul mt-5 row' >
+                        <li className='chart-li ' onClick={()=>getHitoryData(data, 1)}>24 Hours Data</li>
+                        <li className='chart-li ' onClick={()=>getHitoryData(data, 7)}>Last week Data</li>
+                        <li className='chart-li  ' onClick={()=>getHitoryData(data, 30)}>One Month Data</li>
+                        <li className='chart-li  ' onClick={()=>getHitoryData(data, 365)}>One Year Data</li>
                     </ul>
                 </div>
             </Col>

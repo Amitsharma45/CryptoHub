@@ -28,23 +28,31 @@ export default function CoinDetail() {
                         &nbsp;Back
                     </div>
                 </Link>
-                <h1 className='text-center'>{data?.name}</h1>
+                <h1 className='text-center mb-3'>{data?.name}</h1>
 
-                <CoinGraph data={name} />
-
-
-                <Row className='mt-4'>
+                <Row className='mt-1'>
                     <Col xs={12} sm={4}>
-                        <div className='d-flex justify-content-center align-items-center flex-column'>
-                            <img src={data?.image?.large} id='coin-icon' />
-                            <h5>Current Price : &#8377;{data?.market_data?.current_price?.inr.toLocaleString()} </h5>
-                            <h5>Market  Cap : &#8377;{data?.market_data?.market_cap?.inr.toLocaleString().slice(0, -6)} M </h5>
+                        <div className='px-4'>
+                            <div className='d-flex justify-content-center mb-2'>
+                                <img  src={data?.image?.large} id='coin-icon' />
+                            </div>
+                            <div className='coin-detail'>Coin name : {data?.name}</div>
+                            <div className='coin-detail'>Coin Symbol : {data?.symbol} </div>
+                            <div className='coin-detail'>Genesis Date {data?.genesis_date}</div>
+                            <div className='coin-detail'>Current Price : &#8377;&nbsp;{data?.market_data?.current_price?.inr.toLocaleString()} </div>
+                            <div className='coin-detail'>Market  Cap : &#8377;  
+                            &nbsp;{data?.market_data?.market_cap?.inr.toLocaleString()} </div>
+                            <div className='coin-detail' >Price change % in 24hours  :
+                            <span style={{ color: (data?.market_data?.price_change_percentage_24h > 1 ? 'green' : 'red') }}> {data?.market_data?.price_change_percentage_24h} % </span></div>
+                            
                         </div>
                     </Col>
                     <Col xs={12} sm={8}>
-
+                        <h3 className='about-coin'>About Coin</h3>
+                        <p >{data?.description?.en.split('. ')[0]}. </p>
                     </Col>
                 </Row>
+                <CoinGraph data={name} />
             </Container>
         </div>
     )
