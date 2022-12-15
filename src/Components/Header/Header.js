@@ -6,8 +6,8 @@ function Header() {
             <div className="container-fluid">
                 <div>
                     <Link to='/' style={{ color: 'white', textDecoration: 'none', fontSize: '18px' }}>Crypto<span style={{ margin: '0px px', padding: '0px 2px', backgroundColor: 'orange', color: 'black', borderRadius: '3px' }}>Hub</span></Link>
-                    <Link to='/about' style={{ color: 'white', textDecoration: 'none', fontSize: '18px' ,paddingLeft:'10px' }}>About Us</Link>
-                    <Link to='/about' style={{ color: 'white', textDecoration: 'none', fontSize: '18px' ,paddingLeft:'10px' }}>Contact Us</Link>
+                    <Link to='/about-project' style={{ color: 'white', textDecoration: 'none', fontSize: '18px' ,paddingLeft:'10px' }}>About Us</Link>
+                    <Link to='/contact-us' style={{ color: 'white', textDecoration: 'none', fontSize: '18px' ,paddingLeft:'10px' }}>Contact Us</Link>
                 </div>
                 {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
